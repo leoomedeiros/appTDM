@@ -17,7 +17,7 @@ export class HomePage {
   }
 
   ionViewDidEnter(){
-   this.contactProvider.getAll()
+   this.contactProvider.getAllActive()
     .then(results =>{
       this.contacts = results;
     })
@@ -36,6 +36,14 @@ export class HomePage {
 
         this.toast.create({message: "Removido com sucesso!", duration: 3000, position: "bottom"}).present();
       })
+  }
+  statusContact(item: ContactList){
+    this.contactProvider.changeActve(item.key, item.contact)
+    .then(()=>{
+
+      this.toast.create({message: "Tarefa movida para area de finalizadas.", duration: 3000, position: "bottom"}).present();
+      this.navCtrl.setRoot(this.navCtrl.getActive().component);
+    })
   }
 
 }

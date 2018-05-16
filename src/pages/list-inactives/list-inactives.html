@@ -1,11 +1,10 @@
-
-<ion-header>
+<ion-header color="danger">
   <ion-navbar>
     <ion-title>
-      Tarefas Pendentes
+      Tarefas Finalizadas
     </ion-title>
-    <button  icon-only menuToggle>
-      <ion-icon name="menu"></ion-icon> 
+    <button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
     </button>
   </ion-navbar>
 </ion-header>
@@ -24,21 +23,19 @@
 
       <ion-row>
         <ion-col>
-          <button ion-button icon-left clear small (click)="editContact(item)">
-            <ion-icon name="create"></ion-icon>
-            Editar
+          <button ion-button icon-left clear small color="secundary" (click)="statusContact(item)">
+            <ion-icon name="md-swap"></ion-icon>
+            Tarefa Pendente
           </button>
         </ion-col>
         <ion-col>
-          <button ion-button icon-left clear small color="danger" (click)="statusContact(item)">
-            <ion-icon name="md-swap"></ion-icon>
-            Finalizar tarefa
+          <button ion-button icon-left clear small color="danger" (click)="removeContact(item)">
+            <ion-icon name="trash"></ion-icon>
+            Apagar tarefa
           </button>
         </ion-col>
       </ion-row>
     </ion-card>
-
-
 
 
   </ion-list>
