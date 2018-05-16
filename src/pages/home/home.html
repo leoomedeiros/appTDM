@@ -1,14 +1,54 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Lista de Tarefas
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list>
+
+    <ion-card *ngFor="let item of contacts">
+      <div *ngIf="item.contact.active;then content"></div>
+
+      <ng-template #content>
+
+        <ion-card-header>
+          <h1>{{ item.contact.nome }}</h1>
+        </ion-card-header>
+
+        <ion-card-content>
+          <h1>{{ item.contact.desc }}</h1>
+        </ion-card-content>
+
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-left clear small (click)="editContact(item)">
+              <ion-icon name="create"></ion-icon>
+              Editar
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-left clear small (click)="removeContact(item)">
+              <ion-icon name="trash"></ion-icon>
+              Remover
+            </button>
+          </ion-col>
+        </ion-row>
+      </ng-template>
+      
+    </ion-card>
+
+
+   
+
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="addContact()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>
